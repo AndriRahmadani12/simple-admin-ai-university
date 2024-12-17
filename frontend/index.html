@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universitas Negeri Padang - Virtual Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .chat-bubble {
+            max-width: 80%;
+            margin-bottom: 12px;
+            position: relative;
+        }
+        .chat-container {
+            height: 400px;
+        }
+        .chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .chatbot-window {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 380px;
+            z-index: 1000;
+            display: none;
+        }
+        @media (max-width: 640px) {
+            .chatbot-window {
+                width: 90%;
+                right: 5%;
+                left: 5%;
+            }
+        }
+        .message-content {
+            word-break: break-word;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-blue-800 text-white">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23003366'/><text x='50' y='50' font-family='Arial' font-size='40' fill='white' text-anchor='middle' dominant-baseline='middle'>UNP</text></svg>" alt="UNP Logo" class="w-12 h-12">
+                    <div>
+                        <h1 class="font-bold text-xl">Universitas Negeri Padang</h1>
+                        <p class="text-blue-200 text-sm">Kampus Hijau dan Ilmiah</p>
+                    </div>
+                </div>
+                <div class="hidden md:flex gap-6">
+                    <a href="#" class="hover:text-blue-200">Beranda</a>
+                    <a href="#" class="hover:text-blue-200">Akademik</a>
+                    <a href="#" class="hover:text-blue-200">Fakultas</a>
+                    <a href="#" class="hover:text-blue-200">Penelitian</a>
+                    <a href="#" class="hover:text-blue-200">Kontak</a>
+                </div>
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden mt-4">
+                <a href="#" class="block py-2 hover:text-blue-200">Beranda</a>
+                <a href="#" class="block py-2 hover:text-blue-200">Akademik</a>
+                <a href="#" class="block py-2 hover:text-blue-200">Fakultas</a>
+                <a href="#" class="block py-2 hover:text-blue-200">Penelitian</a>
+                <a href="#" class="block py-2 hover:text-blue-200">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-blue-900 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl font-bold mb-4">Selamat Datang di UNP Virtual Assistant</h1>
+                <p class="text-xl text-blue-200">Layanan informasi digital 24/7 untuk civitas akademika Universitas Negeri Padang</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-12">
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                <div class="text-blue-800 mb-4">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Informasi Akademik</h3>
+                <p class="text-gray-600">Akses informasi seputar perkuliahan, jadwal, dan administrasi akademik</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                <div class="text-blue-800 mb-4">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Layanan Mahasiswa</h3>
+                <p class="text-gray-600">Informasi beasiswa, kegiatan mahasiswa, dan layanan kampus</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                <div class="text-blue-800 mb-4">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Agenda Kampus</h3>
+                <p class="text-gray-600">Kalendar akademik dan kegiatan kampus terkini</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Button -->
+    <button onclick="toggleChat()" class="chatbot-button bg-blue-800 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+        </svg>
+    </button>
+
+    <!-- Chatbot Window -->
+    <div id="chatWindow" class="chatbot-window bg-white rounded-xl shadow-2xl">
+        <div class="bg-blue-800 p-4 rounded-t-xl">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                        <span class="text-blue-800 font-bold text-sm">UNP</span>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold">UNP Assistant</h3>
+                        <p class="text-blue-200 text-xs">Online</p>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-white hover:text-blue-200">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="p-4 h-96 overflow-y-auto" id="chatArea">
+            <div class="chat-bubble flex items-start gap-2">
+                <div class="w-8 h-8 rounded-full bg-blue-800 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                    </svg>
+                </div>
+                <div class="bg-gray-100 p-3 rounded-lg message-content">
+                    <p>Halo! Saya adalah asisten virtual UNP. Ada yang bisa saya bantu?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 border-t">
+            <div class="flex gap-2">
+                <input type="text" id="userInput" class="flex-1 border rounded-full px-4 py-2 focus:outline-none focus:border-blue-800" placeholder="Ketik pesan Anda...">
+                <button onclick="sendMessage()" class="bg-blue-800 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-700 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleChat() {
+            const chatWindow = document.getElementById('chatWindow');
+            chatWindow.style.display = chatWindow.style.display === 'none' ? 'block' : 'none';
+        }
+        
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+        
+        function appendMessage(message, isUser = false) {
+            const chatArea = document.getElementById('chatArea');
+            const bubble = document.createElement('div');
+            bubble.className = 'chat-bubble flex items-start gap-2' + (isUser ? ' justify-end' : '');
+        
+            let html = '';
+            
+            if (!isUser) {
+                html += `
+                    <div class="w-8 h-8 rounded-full bg-blue-800 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                        </svg>
+                    </div>
+                `;
+            }
+        
+            html += `
+                <div class="${isUser ? 'bg-blue-800 text-white' : 'bg-gray-100'} p-3 rounded-lg message-content">
+                    <p>${message.replace(/\n/g, '<br>')}</p>
+                </div>
+            `;
+        
+            if (isUser) {
+                html += `
+                    <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                    </div>
+                `;
+            }
+        
+            bubble.innerHTML = html;
+            chatArea.appendChild(bubble);
+            chatArea.scrollTop = chatArea.scrollHeight;
+        }
+        
+        async function sendMessage() {
+            const userInput = document.getElementById('userInput');
+            const message = userInput.value.trim();
+            
+            if (message === '') return;
+            
+            // Append user message
+            appendMessage(message, true);
+            
+            // Clear input
+            userInput.value = '';
+            
+            try {
+                const response = await fetch('http://127.0.0.1:8000/process_message', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        user_messages: message
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                const data = await response.json();
+                appendMessage(data.response);
+            } catch (error) {
+                console.error('Error:', error);
+                appendMessage('Maaf, terjadi kesalahan dalam memproses pesan Anda.');
+            }
+        }
+        
+        // Add event listener for Enter key
+        document.getElementById('userInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                sendMessage();
+            }
+        });
+        
+        // Initialize chat window state
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('chatWindow').style.display = 'none';
+        });
+        </script>
+</body>
+</html>
