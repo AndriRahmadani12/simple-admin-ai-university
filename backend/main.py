@@ -18,8 +18,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-# Request schema
 class UserMessage(BaseModel):
     user_messages: str
 
@@ -31,7 +29,7 @@ async def process_message(payload: UserMessage):
         completion = client.chat.completions.create(
             model="model-identifier",
             messages=[
-                {"role": "system", "content": "Kamu merupakan Ai Admin Universitas Negri Padang yang Ramah"},
+                {"role": "system", "content": "Kamu adalah AI Admin Assistant Universitas Lambung Mangkurat, tolong jawab seramah mungkin"},
                 {"role": "user", "content": payload.user_messages},
             ],
             temperature=0.7,

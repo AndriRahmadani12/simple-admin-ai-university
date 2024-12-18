@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Universitas Negeri Padang - Virtual Assistant</title>
+    <title>Universitas Lambung Mangkurat - Virtual Assistant</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .chat-bubble {
@@ -38,49 +38,58 @@
         .message-content {
             word-break: break-word;
         }
+        .bg-unlam {
+            background-color: #FFD700;
+        }
+        .text-unlam {
+            color: #FFD700;
+        }
+        .hover\:bg-unlam-dark:hover {
+            background-color: #FFC700;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Navbar -->
-    <nav class="bg-blue-800 text-white">
+    <nav class="bg-unlam text-black">
         <div class="container mx-auto px-4 py-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-4">
-                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23003366'/><text x='50' y='50' font-family='Arial' font-size='40' fill='white' text-anchor='middle' dominant-baseline='middle'>UNP</text></svg>" alt="UNP Logo" class="w-12 h-12">
+                    <img src="https://d22gwcrfo2de51.cloudfront.net/wp-content/uploads/2020/08/logo_Universitas-Lambung-Mangkurat.png" alt="UNLAM Logo" class="w-12 h-12">
                     <div>
-                        <h1 class="font-bold text-xl">Universitas Negeri Padang</h1>
-                        <p class="text-blue-200 text-sm">Kampus Hijau dan Ilmiah</p>
+                        <h1 class="font-bold text-xl">Universitas Lambung Mangkurat</h1>
+                        <p class="text-gray-700 text-sm">Berdaya Saing dan Unggul</p>
                     </div>
                 </div>
                 <div class="hidden md:flex gap-6">
-                    <a href="#" class="hover:text-blue-200">Beranda</a>
-                    <a href="#" class="hover:text-blue-200">Akademik</a>
-                    <a href="#" class="hover:text-blue-200">Fakultas</a>
-                    <a href="#" class="hover:text-blue-200">Penelitian</a>
-                    <a href="#" class="hover:text-blue-200">Kontak</a>
+                    <a href="#" class="hover:text-gray-700">Beranda</a>
+                    <a href="#" class="hover:text-gray-700">Akademik</a>
+                    <a href="#" class="hover:text-gray-700">Fakultas</a>
+                    <a href="#" class="hover:text-gray-700">Penelitian</a>
+                    <a href="#" class="hover:text-gray-700">Kontak</a>
                 </div>
-                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                <button class="md:hidden text-black" onclick="toggleMobileMenu()">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
                 </button>
             </div>
             <div id="mobileMenu" class="hidden md:hidden mt-4">
-                <a href="#" class="block py-2 hover:text-blue-200">Beranda</a>
-                <a href="#" class="block py-2 hover:text-blue-200">Akademik</a>
-                <a href="#" class="block py-2 hover:text-blue-200">Fakultas</a>
-                <a href="#" class="block py-2 hover:text-blue-200">Penelitian</a>
-                <a href="#" class="block py-2 hover:text-blue-200">Kontak</a>
+                <a href="#" class="block py-2 hover:text-gray-700">Beranda</a>
+                <a href="#" class="block py-2 hover:text-gray-700">Akademik</a>
+                <a href="#" class="block py-2 hover:text-gray-700">Fakultas</a>
+                <a href="#" class="block py-2 hover:text-gray-700">Penelitian</a>
+                <a href="#" class="block py-2 hover:text-gray-700">Kontak</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <div class="bg-blue-900 text-white py-16">
+    <div class="bg-yellow-600 text-white py-16">
         <div class="container mx-auto px-4">
             <div class="max-w-3xl">
-                <h1 class="text-4xl font-bold mb-4">Selamat Datang di UNP Virtual Assistant</h1>
-                <p class="text-xl text-blue-200">Layanan informasi digital 24/7 untuk civitas akademika Universitas Negeri Padang</p>
+                <h1 class="text-4xl font-bold mb-4">Selamat Datang di ULM Virtual Assistant</h1>
+                <p class="text-xl text-yellow-100">Layanan informasi digital 24/7 untuk civitas akademika Universitas Lambung Mangkurat</p>
             </div>
         </div>
     </div>
@@ -89,7 +98,7 @@
     <div class="container mx-auto px-4 py-12">
         <div class="grid md:grid-cols-3 gap-8">
             <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition">
-                <div class="text-blue-800 mb-4">
+                <div class="text-yellow-600 mb-4">
                     <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
                     </svg>
@@ -98,7 +107,7 @@
                 <p class="text-gray-600">Akses informasi seputar perkuliahan, jadwal, dan administrasi akademik</p>
             </div>
             <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition">
-                <div class="text-blue-800 mb-4">
+                <div class="text-yellow-600 mb-4">
                     <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
                     </svg>
@@ -107,7 +116,7 @@
                 <p class="text-gray-600">Informasi beasiswa, kegiatan mahasiswa, dan layanan kampus</p>
             </div>
             <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition">
-                <div class="text-blue-800 mb-4">
+                <div class="text-yellow-600 mb-4">
                     <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
@@ -119,7 +128,7 @@
     </div>
 
     <!-- Chatbot Button -->
-    <button onclick="toggleChat()" class="chatbot-button bg-blue-800 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 transition">
+    <button onclick="toggleChat()" class="chatbot-button bg-unlam text-black rounded-full p-4 shadow-lg hover:bg-unlam-dark transition">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
         </svg>
@@ -127,18 +136,18 @@
 
     <!-- Chatbot Window -->
     <div id="chatWindow" class="chatbot-window bg-white rounded-xl shadow-2xl">
-        <div class="bg-blue-800 p-4 rounded-t-xl">
+        <div class="bg-unlam p-4 rounded-t-xl">
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
                     <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                        <span class="text-blue-800 font-bold text-sm">UNP</span>
+                        <span class="text-yellow-600 font-bold text-sm">ULM</span>
                     </div>
                     <div>
-                        <h3 class="text-white font-bold">UNP Assistant</h3>
-                        <p class="text-blue-200 text-xs">Online</p>
+                        <h3 class="text-black font-bold">ULM Assistant</h3>
+                        <p class="text-gray-700 text-xs">Online</p>
                     </div>
                 </div>
-                <button onclick="toggleChat()" class="text-white hover:text-blue-200">
+                <button onclick="toggleChat()" class="text-black hover:text-gray-700">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
@@ -148,21 +157,21 @@
 
         <div class="p-4 h-96 overflow-y-auto" id="chatArea">
             <div class="chat-bubble flex items-start gap-2">
-                <div class="w-8 h-8 rounded-full bg-blue-800 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-8 h-8 rounded-full bg-unlam flex items-center justify-center">
+                    <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
                     </svg>
                 </div>
                 <div class="bg-gray-100 p-3 rounded-lg message-content">
-                    <p>Halo! Saya adalah asisten virtual UNP. Ada yang bisa saya bantu?</p>
+                    <p>Halo! Saya adalah asisten virtual ULM. Ada yang bisa saya bantu?</p>
                 </div>
             </div>
         </div>
 
         <div class="p-4 border-t">
             <div class="flex gap-2">
-                <input type="text" id="userInput" class="flex-1 border rounded-full px-4 py-2 focus:outline-none focus:border-blue-800" placeholder="Ketik pesan Anda...">
-                <button onclick="sendMessage()" class="bg-blue-800 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-700 transition">
+                <input type="text" id="userInput" class="flex-1 border rounded-full px-4 py-2 focus:outline-none focus:border-yellow-600" placeholder="Ketik pesan Anda...">
+                <button onclick="sendMessage()" class="bg-unlam text-black rounded-full w-10 h-10 flex items-center justify-center hover:bg-unlam-dark transition">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
                     </svg>
